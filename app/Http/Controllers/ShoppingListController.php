@@ -14,10 +14,10 @@ class ShoppingListController extends Controller
     //
     public function list()
     {
-        $per_page=3;
+        $per_page=20;
 
         $list = Shopping_listModel::where('user_id',Auth::id())
-                                    ->orderBy('name','DESC')
+                                    ->orderBy('name','ASC')
                                     ->paginate($per_page);
 //$sql = Shopping_listModel::where('user_id', Auth::id())->toSql();
 //echo "<pre>\n"; var_dump($sql, $list); exit;

@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\ShoppingListController;
 use App\Http\Controllers\CompletedShoppingListController;
+use App\Http\Controllers\UserController;
 
 
 
@@ -20,6 +21,11 @@ use App\Http\Controllers\CompletedShoppingListController;
 
 Route::get('/',[AuthController::class,'index'])->name('front.index');
 Route::post('/login',[AuthController::class,'login']);
+
+Route::prefix('/user')->group(function(){
+    Route::get('/register',[UserController::class,'index']);
+    Route::post('/register',[UserController::class,'register']);
+});
 
 Route::middleware(['auth'])->group(function () {
     Route::prefix('/shopping_list')->group(function () {
