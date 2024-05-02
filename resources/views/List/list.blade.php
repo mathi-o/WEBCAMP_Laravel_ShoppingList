@@ -1,5 +1,5 @@
 @extends('layout')
-@section('title')(一覧画面)@endsection
+
 @section('contents')
         <h1>「買うもの」の登録</h1>
         @if(session('front.task_register_success') ==true)
@@ -29,25 +29,27 @@
         <h1>「買うもの」一覧</h1>
         <a href="/completed_shopping_list/list">購入済み「買うもの」一覧</a>
         <table border="1">
-        <tr>
-            <th>登録日
-            <th>「買うもの」名
+            <tr>
+                <th>登録日
+                <th>「買うもの」名
+            </tr>
         @foreach($list as $data)
             <tr>
-                <td>{{ $data->created_at->format('Y年m月d日') }}
+                <td>{{ $data->created_at->format('Y/m/d') }}
                 <td>{{ $data->name }}
-                <td><form action="{{route('complete',['shopping_list_id'=>$data->id])}}" method="post">
+                <td><form style="margin: 0px;" action="{{route('complete',['shopping_list_id'=>$data->id])}}" method="post">
                         @csrf
                         <button onclick='return confirm("この「買うもの」を「完了」します。よろしいですか？");'>完了</button>
                     </form>
-
+                </td>
                 <td>　</td>
-
-                <td><form action="{{route('delete',['shopping_list_id'=>$data->id])}}" method="post">
+                <td><form style="margin: 0px;" action="{{route('delete',['shopping_list_id'=>$data->id])}}" method="post">
                         @csrf
                         @method("DELETE")
                         <button onclick='return confirm("この「買うもの」を「削除」します。よろしいですか？");'>削除</button>
                     </form>
+                </td>
+            </tr>
 
         @endforeach
         </table>

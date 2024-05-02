@@ -7,5 +7,6 @@
     </head>
     <body>
     @yield('contents')
+
     </body>
 </html>
