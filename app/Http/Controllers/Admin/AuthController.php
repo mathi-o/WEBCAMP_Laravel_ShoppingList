@@ -21,11 +21,10 @@ class AuthController extends Controller
         $datum = $request->validated();
         //ddd($datum);
 
-        if(Auth::guard('admin')->attempt($datum) === false)
-        {
+        if (Auth::guard('admin')->attempt($datum) === false) {
             return back()
-                    ->withInput()
-                    ->withErrors(['auth'=>'ログインIDかパスワードに誤りがあります。',]);
+                   ->withInput()
+                   ->withErrors(['auth' => 'ログインIDかパスワードに誤りがあります。',]);
         }
 
 
@@ -39,6 +38,6 @@ class AuthController extends Controller
         Auth::guard('admin')->logout();
         $request->session()->regenerateToken();
         $request->session()->regenerate();
-        return redirect(route('admin.index'));
+        return redirect(route('Admin.index'));
     }
 }

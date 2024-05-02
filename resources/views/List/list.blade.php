@@ -1,5 +1,5 @@
 @extends('layout')
-
+@section('title')(一覧画面)@endsection
 @section('contents')
         <h1>「買うもの」の登録</h1>
         @if(session('front.task_register_success') ==true)
@@ -68,7 +68,7 @@
             次に進む
         @endif
         <br>
-        <hr>
+        <hr size="3" noshade>
         <menu>
             <a href="/logout">ログアウト</a><br>
         </menu>

@@ -43,11 +43,13 @@ Route::middleware(['auth'])->group(function () {
 });
 
 Route::prefix('/admin')->group(function(){
-    Route::get('',[AdminAuthController::class, 'index'])->name('admin.index');
+    Route::get('',[AdminAuthController::class, 'index'])->name('Admin.index');
     Route::post('/login',[AdminAuthController::class,'login']);
     Route::middleware(['auth:admin'])->group(function(){
         Route::get('/top',[AdminHomeController::class,'top'])->name('admin.top');
-        Route::get('/user/list',[AdminUserController::class,'list'])->name('admin.list');
+        Route::get('/user/list',[AdminUserController::class,'list'])->name('admin.user.list');
+        Route::get('/logout',[AdminAuthController::class,'logout']);
     });
     Route::get('/logout',[AdminAuthController::class,'logout']);
+    Route::get('/admin/logout',[AdminAuthController::class,'logout']);
 });
