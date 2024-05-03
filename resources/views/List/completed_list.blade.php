@@ -17,7 +17,7 @@
         @foreach($list as $data)
             <tr>
                 <td>{{ $data->name }}
-                <td>{{ $data->created_at->format('Y/m/d') }}
+                <td>{{$data->created_at->format('Y/m/d')}}
 
 
         @endforeach

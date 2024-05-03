@@ -70,7 +70,7 @@
             次に進む
         @endif
         <br>
-        <hr size="3" noshade>
+        <hr>
         <menu>
             <a href="/logout">ログアウト</a><br>
         </menu>
